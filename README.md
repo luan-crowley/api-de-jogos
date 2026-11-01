@@ -49,3 +49,25 @@ Ajuste a porta se a aplicação estiver usando outra.
 | GET | `/jogos` | Lista os jogos cadastrados |
 | GET | `/jogos/status` | Retorna uma mensagem indicando que a API está funcionando |
 | POST | `/jogos` | Cadastra um jogo e rejeita IDs repetidos |
+| GET | `/jogos/{id}` | Busca um jogo pelo ID; retorna 404 se não existir |
+
+==================================================================
+
+## Validações do cadastro
+
+- O ID deve ser maior que zero.
+- Nome e gênero não podem estar vazios ou conter apenas espaços.
+- IDs repetidos não são aceitos.
+
+Dados inválidos retornam `400 Bad Request`.
+IDs repetidos retornam `409 Conflict`.
+
+==================================================================
+
+## Consulta por ID
+
+Com um jogo de ID 1 cadastrado, acesse `/jogos/1`.
+A resposta esperada é `200 OK`, com os dados desse jogo.
+
+Ao consultar um ID que não existe, a API retorna
+`404 Not Found`, com a mensagem "Jogo não encontrado".
